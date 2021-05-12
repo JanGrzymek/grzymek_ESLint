@@ -1,7 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const router = express.Router();
-const { getCocktails, getCocktail } = require("../models/cocktails");
+const { getCocktails, getCocktail, getZutaten } = require("../models/cocktails");
 
 router.get(
   "/cocktails",
@@ -19,4 +19,11 @@ router.get(
   })
 );
 
-module.exports = router;
+router.get(
+  "cocktails/:name/zutaten",
+  asyncHandler(async (req, res) => {
+    const result = await getZutaten(req.params.name);
+    res.status(result.code).json(result);
+  })
+),
+  (module.exports = router);
