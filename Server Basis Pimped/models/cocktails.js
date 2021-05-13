@@ -62,10 +62,13 @@ async function getSchnaeppchen(preis) {
   };
 }
 
+async function delCocktail(name) {}
+
 module.exports = {
   getCocktails,
   getCocktail,
   getZutaten,
   getPreise,
   getSchnaeppchen,
+  delCocktail,
 };

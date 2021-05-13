@@ -7,6 +7,7 @@ const {
   getZutaten,
   getPreise,
   getSchnaeppchen,
+  delCocktail,
 } = require("../models/cocktails");
 
 router.get(
@@ -46,4 +47,12 @@ router.get(
       res.status(result.code).json(result);
     })
   ),
-  (module.exports = router);
+  router.delete(
+    "/cocktails/:name",
+    asyncHandler(async (req, res) => {
+      const result = await delCocktail(req.params.name);
+      res.status(result.code).json(result);
+    })
+  );
+
+module.exports = router;
