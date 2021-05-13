@@ -1,7 +1,12 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const router = express.Router();
-const { getCocktails, getCocktail, getZutaten } = require("../models/cocktails");
+const {
+  getCocktails,
+  getCocktail,
+  getZutaten,
+  getPreise,
+} = require("../models/cocktails");
 
 router.get(
   "/cocktails",
@@ -12,15 +17,22 @@ router.get(
 );
 
 router.get(
-  "/cocktails/:name",
+  "/preise",
   asyncHandler(async (req, res) => {
-    const result = await getCocktail(req.params.name);
+    const result = await getPreise();
     res.status(result.code).json(result);
   })
-);
+),
+  router.get(
+    "/cocktails/:name",
+    asyncHandler(async (req, res) => {
+      const result = await getCocktail(req.params.name);
+      res.status(result.code).json(result);
+    })
+  );
 
 router.get(
-  "cocktails/:name/zutaten",
+  "/cocktails/:name/zutaten",
   asyncHandler(async (req, res) => {
     const result = await getZutaten(req.params.name);
     res.status(result.code).json(result);

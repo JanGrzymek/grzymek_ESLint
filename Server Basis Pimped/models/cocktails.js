@@ -29,20 +29,31 @@ async function getZutaten(name) {
     "SELECT zbez FROM zutat JOIN besteht USING(zid) JOIN cocktail USING(cid) WHERE cname= $1",
     [name]
   );
-  if (rows.length > 0)
+  if (rows.length > 0) {
+    //for (let i = 0; rows.length > i; i++) {
     return {
       code: 200,
-      data: rows[0],
+      data: rows, //rows[i]
     };
-  else
+  } else {
     return {
       code: 404,
       data: `the specified cocktail ${name} was not found in the database`,
     };
+  }
+}
+
+async function getPreise() {
+  const { rows } = await db.query("SELECT cname, preis FROM cocktail");
+  return {
+    code: 200,
+    data: rows,
+  };
 }
 
 module.exports = {
   getCocktails,
   getCocktail,
   getZutaten,
+  getPreise,
 };
