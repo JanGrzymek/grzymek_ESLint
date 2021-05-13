@@ -8,5 +8,17 @@ GET http://127.0.0.1:3000/preise
 ###
 GET http://127.0.0.1:3000/schnaeppchen
 ###
-DELETE http://127.0.0.1:3000/cocktails/Alice
+DELETE http://127.0.0.1:3000/cocktails/Alice/
+###
+POST http://127.0.0.1:3000/cocktails/
+Content-Type: application/json
+
+{
+    "cname": "Wasser",
+    "preis": "1.00",
+    "zubereitung": "Wasser.",
+    "kid": "1",
+    "zgid": "1",
+    "sgid": "1",
+}
 ###

@@ -64,6 +64,20 @@ async function getSchnaeppchen(preis) {
 
 async function delCocktail(name) {}
 
+async function insertCocktail(e) {
+  let { rows } = await db.query("SELECT MAX(cid) AS max FROM cocktail");
+  let cid = rows[0].max + 1;
+  await db.query(
+    `INSERT INTO cocktail (cid, cname, preis, zubereitung, kid, zgid, sgid)
+                           VALUES($1,$2,$3,$4, $5, $6, $7)`,
+    [cid, e.cname, e.preis, e.zubereitung, e.kid, e.zgid, e.sgid]
+  );
+  return {
+    code: 200,
+    data: cid,
+  };
+}
+
 module.exports = {
   getCocktails,
   getCocktail,
@@ -71,4 +85,5 @@ module.exports = {
   getPreise,
   getSchnaeppchen,
   delCocktail,
+  insertCocktail,
 };

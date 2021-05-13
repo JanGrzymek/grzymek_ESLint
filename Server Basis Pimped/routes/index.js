@@ -8,6 +8,7 @@ const {
   getPreise,
   getSchnaeppchen,
   delCocktail,
+  insertCocktail,
 } = require("../models/cocktails");
 
 router.get(
@@ -55,4 +56,11 @@ router.get(
     })
   );
 
+router.post(
+  "/cocktails",
+  asyncHandler(async (req, res) => {
+    const result = await insertCocktail(req.body);
+    res.status(result.code).json(result);
+  })
+);
 module.exports = router;
