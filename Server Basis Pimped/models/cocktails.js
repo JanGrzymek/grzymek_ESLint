@@ -51,9 +51,21 @@ async function getPreise() {
   };
 }
 
+async function getSchnaeppchen(preis) {
+  const { rows } = await db.query(
+    "SELECT cname, preis FROM cocktail WHERE preis <= $1",
+    [preis]
+  );
+  return {
+    code: 200,
+    data: rows,
+  };
+}
+
 module.exports = {
   getCocktails,
   getCocktail,
   getZutaten,
   getPreise,
+  getSchnaeppchen,
 };

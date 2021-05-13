@@ -1,8 +1,10 @@
-GET http://127.0.0.1:3000/cocktails
-###
+GET http://127.0.0.1:3000/cocktails 
+### 
 GET http://127.0.0.1:3000/cocktails/Alice
 ###
 GET http://127.0.0.1:3000/cocktails/Alice/zutaten
 ###
-GET http://127.0.0.1:3000/cocktails/preise
+GET http://127.0.0.1:3000/preise
+###
+GET http://127.0.0.1:3000/schnaeppchen
 ###

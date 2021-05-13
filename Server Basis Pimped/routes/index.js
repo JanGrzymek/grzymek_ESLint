@@ -6,6 +6,7 @@ const {
   getCocktail,
   getZutaten,
   getPreise,
+  getSchnaeppchen,
 } = require("../models/cocktails");
 
 router.get(
@@ -38,4 +39,11 @@ router.get(
     res.status(result.code).json(result);
   })
 ),
+  router.get(
+    "/schnaeppchen",
+    asyncHandler(async (req, res) => {
+      const result = await getSchnaeppchen(7.2);
+      res.status(result.code).json(result);
+    })
+  ),
   (module.exports = router);
