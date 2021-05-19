@@ -63,4 +63,5 @@ router.post(
     res.status(result.code).json(result);
   })
 );
+
 module.exports = router;

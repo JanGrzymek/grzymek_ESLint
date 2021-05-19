@@ -85,7 +85,7 @@ async function insertCocktail(e) {
   );
   return {
     code: 200,
-    data: cid,
+    data: 'Inserted ${cid}',
   };
 }
 
