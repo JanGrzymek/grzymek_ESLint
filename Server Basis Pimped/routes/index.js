@@ -9,6 +9,7 @@ const {
   getSchnaeppchen,
   delCocktail,
   insertCocktail,
+  patchPreis,
 } = require('../models/cocktails');
 
 router.get(
@@ -60,6 +61,14 @@ router.post(
   '/cocktails',
   asyncHandler(async (req, res) => {
     const result = await insertCocktail(req.body);
+    res.status(result.code).json(result);
+  })
+);
+
+router.patch(
+  '/cocktails/:preis',
+  asyncHandler(async (req, res) => {
+    const result = await patchPreis(req.params.preis, req.body);
     res.status(result.code).json(result);
   })
 );
