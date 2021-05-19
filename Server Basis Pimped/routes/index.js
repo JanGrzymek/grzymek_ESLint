@@ -1,5 +1,5 @@
-const express = require("express");
-const asyncHandler = require("express-async-handler");
+const express = require('express');
+const asyncHandler = require('express-async-handler');
 const router = express.Router();
 const {
   getCocktails,
@@ -9,10 +9,10 @@ const {
   getSchnaeppchen,
   delCocktail,
   insertCocktail,
-} = require("../models/cocktails");
+} = require('../models/cocktails');
 
 router.get(
-  "/cocktails",
+  '/cocktails',
   asyncHandler(async (req, res) => {
     const result = await getCocktails();
     res.status(result.code).json(result);
@@ -20,14 +20,14 @@ router.get(
 );
 
 router.get(
-  "/preise",
+  '/preise',
   asyncHandler(async (req, res) => {
     const result = await getPreise();
     res.status(result.code).json(result);
   })
 ),
   router.get(
-    "/cocktails/:name",
+    '/cocktails/:name',
     asyncHandler(async (req, res) => {
       const result = await getCocktail(req.params.name);
       res.status(result.code).json(result);
@@ -35,21 +35,21 @@ router.get(
   );
 
 router.get(
-  "/cocktails/:name/zutaten",
+  '/cocktails/:name/zutaten',
   asyncHandler(async (req, res) => {
     const result = await getZutaten(req.params.name);
     res.status(result.code).json(result);
   })
 ),
   router.get(
-    "/schnaeppchen",
+    '/schnaeppchen',
     asyncHandler(async (req, res) => {
       const result = await getSchnaeppchen(7.2);
       res.status(result.code).json(result);
     })
   ),
   router.delete(
-    "/cocktails/:name",
+    '/cocktails/:name',
     asyncHandler(async (req, res) => {
       const result = await delCocktail(req.params.name);
       res.status(result.code).json(result);
@@ -57,7 +57,7 @@ router.get(
   );
 
 router.post(
-  "/cocktails",
+  '/cocktails',
   asyncHandler(async (req, res) => {
     const result = await insertCocktail(req.body);
     res.status(result.code).json(result);
